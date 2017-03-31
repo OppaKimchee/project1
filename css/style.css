@@ -1,0 +1,35 @@
+h1 {
+  display: inline-block;
+}
+h3 {
+  float:right;
+}
+#deck {
+  height: 300px;
+  width: 50%;
+  background-color: black;
+  color: white;
+}
+
+#house {
+  height: 300px;
+  width: 50%;
+  background-color: blue;
+  position:absolute;
+  top: 0;
+  right: 0;
+  color: white;
+}
+
+#player {
+  height: 300px;
+  width: 50%;
+  background-color: red;
+  margin: 0 auto;
+  color: white;
+}
+
+.container{
+  position:relative;
+  border:1px solid red;
+}
