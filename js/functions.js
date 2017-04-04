@@ -14,10 +14,10 @@ function createDeck(){
       else{
         deck.push({rank: rank, card: suit + 0 + rank });
       }
-    };//forloop
-  });//forEach function()
+    };
+  });
   return deck;
-}//deck()
+}
 
 /*-- Shuffle --*/
 function shuffle(cards){
@@ -36,41 +36,11 @@ function shuffle(cards){
 }
 
 /*-- Bets --*/
-function handleBets(){
-  if(bank >= 10){
-    $('#a10').on('click',function(event){
-      pool += 10;
-      bank -= 10;
-    });
+function handleBets(bet){
+  if(bank >= bet){
+    bank -= bet;
+    pool += bet;
   }
-
-  if(bank >= 100){
-    $('#a100').on('click',function(event){
-      pool += 100;
-      bank -= 100;
-    })
-  }
-
-  $('#m100').on('click',function(event){
-    if(pool >= 100){
-      pool -= 100;
-      bank += 100;
-    }
-  });
-
-  $('#m10').on('click',function(event){
-    if(pool >=10){
-      pool -= 10;
-      bank += 10;
-    }
-  });
-
-  $('#confirm').on('click',function(event){
-    $('#m10').off();
-    $('#m100').off();
-    $('#a10').off();
-    $('#a100').off();
-  });
 }
 
 /*-- bankrupt --*/
@@ -83,109 +53,94 @@ function bankrupt(){
 }
 
 /*-- Hit or Stand --*/
-function hitBtn(event){
-  $('#hit').off();
-  $('#stand').off();
-  return deal(playerHand);
+function handleHit(event){
+  playerHand.push(shuffledDeck.pop());
+  playerVal = getHandVal(playerHand);
+  if (playerVal > 21) doHandOver();
+  render();
 }
+
 function standBtn(event){
-  $('#stand').off();
-  $('#hit').off();
-  $('.card').removeClass('back')
-  return
+  doHandOver();
 }
 /*-- deal card to player depending on passed value --*/
-function deal(player){
-  if(player === playerHand){
-    playerHand.push(shuffledDeck[0]);
-    //add card
-    $('#playerBoard').append(`<div class="card ${shuffledDeck[0].card}"></div>`)
-    shuffledDeck.splice(0,1);
-  }
-  else{
-    //add card
-    if(houseHand.length === 0){
-      $('#houseBoard').append(`<div class="card ${shuffledDeck[0].card} back"></div>`)
-      shuffledDeck.splice(0,1);
-      houseHand.push(shuffledDeck[0])
+function dealCards(){
+  playerHand = [];
+  houseHand = [];
+  playerHand.push(shuffledDeck.pop());
+  houseHand.push(shuffledDeck.pop());
+  playerHand.push(shuffledDeck.pop());
+  houseHand.push(shuffledDeck.pop());
+}
+
+function doHandOver() {
+  handInProgress = false;
+  if (playerVal > 21) {
+    if (bank >= pool) {
+      bank -= pool;
+    } else {
+      pool = 0;
     }
-    else{
-      houseHand.push(shuffledDeck[0])
-      $('#houseBoard').append(`<div class="card ${shuffledDeck[0].card}"></div>`)
-      shuffledDeck.splice(0,1);
+    message = "You Lose";
+  } else if (houseVal > 21) {
+    bank += pool;
+    message = "You Won!";
+  } else if (playerVal === houseVal) {
+    message = "Tied!";
+  } else if (playerVal > houseVal) {
+    bank += pool;
+    message = "You Won!";
+  } else {
+    if (bank >= pool) {
+      bank -= pool;
+    } else {
+      pool = 0;
     }
+    message = "Your Lose";
   }
+  render();
 }
 
 /*-- check hand value for cross checking with bust --*/
-function check(playerHand, houseHand){
-  playerVal = 0; // reset player val to 0
-  for(var i = 0; i < playerHand.length; i++){
-    playerVal += playerHand[i].rank;
+function getHandVal(hand){
+  var val = 0;
+  var aceCount = 0;
+  for(var i = 0; i < hand.length; i++){
+    val += hand[i].rank;
+    if (hand[i].rank === 11) aceCount++;
   }
-  bustCheck(playerHand);
-
-  houseVal = 0;
-  for(var i = 0; i < houseHand.length; i++){
-    houseVal += houseHand[i].rank;
+  while (val > 21 && aceCount) {
+    val -= 10;
+    aceCount--;
   }
-  bustCheck(houseHand);
-}
-
-// two bust vars, playerBust, houseBust
-// set bust vars during bustCheck
-// after check() returns, check bust vars
-// if a bust var === true, other has won
-// if no bust vars are true, compare hand values
-// highest wins, add pot to winner bank
-// delete switch statement
-
-/*-- Check to see if hand was busted --*/
-function bustCheck(hand){
-  var playerBust = false;
-  var houseBust = false;
-
-  if (playerVal > 21) {
-    ace(playerHand);
-    // check if player is busted
-    if(playerVal > 21){
-      $('#display').text("BUST!!!!!!!!!!!!!!!");
-      playerBust = true;
-    }
-  }
-
-  if(houseVal > 21){
-    ace(houseHand);
-    if(houseVal > 21 ){
-      $('#display').text("Player Wins");
-      houseBust = true;
-    }
-  }
-}
-
-/*-- Ace Promp --*/
-function ace(hand){
-  if(hand === playerHand){
-    for (var i = 0; i < playerHand.length; i++){
-      if(playerHand[i].rank === 11){
-        playerHand[i].rank = 1;
-        playerVal -= 10;
-        break;
-      }
-    }
-  }
-  else{
-    for(var i = 0; i < houseHand.length; i++){
-      if(houseHand[i].rank === 11){
-        houseHand[i].rank = 1;
-        houseHand -= 10;
-        break;
-      }
-    }
-  }
+  return val;
 }
 
 function render() {
+  handInProgress ? $('#betDisplay').hide() : $('#betDisplay').show();
+  handInProgress ? $('#hitStandDisplay').show() : $('#hitStandDisplay').hide();
+  if (playerHand.length) renderHands();
+  $('#display').text(message);
+  if (!handInProgress) $('#house span').text(houseVal);
+  $('#player span').text(playerVal);
 
+
+
+
+}
+
+function renderHands() {
+  $('#playerBoard').html('');
+  $('#houseBoard').html('');
+  playerHand.forEach(function(card) {
+    $('#playerBoard').append(`<div class="card ${card.card}"></div>`)
+  });
+  houseHand.forEach(function(card, idx) {
+    if (idx === 0 && handInProgress) {
+      $('#houseBoard').append(`<div class="card back"></div>`)
+    } else {
+      $('#houseBoard').append(`<div class="card ${card.card}"></div>`)
+    }
+  });
 }
 

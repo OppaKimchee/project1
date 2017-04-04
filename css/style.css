@@ -9,26 +9,25 @@ body{
   background-size: cover;
 }
 #deck {
-  height: 300px;
-  width: 50%;
-  background-color: black;
+  width: 25%;
+  background-color: clear;
   color: white;
 }
 
 #house {
-  height: 300px;
-  width: 50%;
-  background-color: blue;
+  width: 75%;
+  background-color: clear;
   position:absolute;
   top: 0;
   right: 0;
+  display: inline-block;
   color: white;
 }
 
 #player {
-  height: 300px;
   width: 50%;
-  background-color: red;
+  padding: 0;
+  background-color: clear;
   margin: 0 auto;
   color: white;
 }
@@ -38,22 +37,43 @@ body{
   border:1px solid red;
 }
 
+#playerContainer{
+  position:relative;
+  top:150px;
+}
+
 #display{
   width: 50%;
   margin: 0 auto;
   background-color: yellow;
+}
+#displayContainer{
+  margin: 0 auto;
+  display:inline-block;
+
 }
 #pool{
   width: 50%;
   margin: 0 auto;
   background-color: pink;
 }
-#bets{
-  width: 50%;
+#betDisplay{
+  width: 75%;
   margin: 0 auto;
 }
 .hitStand{
   width: 100px;
-  position: relative;
-  bottom: 0px;
+  margin: 0 auto;
+}
+#hitStandDisplay{
+  width: 50%;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 100px;
+}
+#buttonContainer{
+  width: 75%;
+  margin: 0 auto;
+  position:absolute;
+  bottom: 0;
 }

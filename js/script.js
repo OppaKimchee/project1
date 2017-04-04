@@ -5,10 +5,12 @@ var playerHand;
 var houseHand;
 var playerVal;
 var houseVal;
-var bust;
+var playerBust;
+var houseBust;
 var bank;
-var confirm;
 var pool;
+var handInProgress;
+var message;
 
 
 /*-- Cached Elements --*/
@@ -16,49 +18,63 @@ var pool;
 
 
 /*-- Event Listeners --*/
+$('#100').on('click',function(event){
+  handleBets(100);
+});
+$('#25').on('click',function(event){
+  handleBets(25);
+});
+$('#10').on('click',function(event){
+  handleBets(10);
+});
+$('#1').on('click',function(event){
+  handleBets(1);
+});
+// $('#confirm').on('click',function(event){
+//   $('#m10').off();
+//   $('#m100').off();
+//   $('#a10').off();
+//   $('#a100').off();
+// });
+$('#clear').on('click')
+$('#deal').on('click',dealHand)
 
+$('#hit').on('click',handleHit);
+$('#stand').on('click',standBtn);
 
 /*-- Initializer --*/
 function init(){
   deck = createDeck();
   shuffledDeck = shuffle(deck);
-  playerHand = [];
-  houseHand = [];
   playerVal = 0;
   houseVal = 0;
-  hit = false;
-  bust = false;
+  playerBust = false;
+  houseBust = false;
   bank = 1000;
-  confirm = true;
   pool = 0;
+  handInProgress = false;
+  playerHand = [];
+  houseHand = [];
+  render();
 }
 
 /*-- Game Logic --*/
-function start(){
-  //bets
-  //show playerHand[0] on board
-  deal(playerHand);
-  //hide houseHand[0] on board
-  deal(houseHand);
-  //show playerHand[1] on board
-  deal(playerHand);
-  //show houseHand[1] on board
-  deal(houseHand);
-  while(bust === false && !bankrupt()){
-    //bankrupt();
-    handleBets();
-    $('#hit').on('click',hitBtn);
-    $('#stand').on('click',standBtn);
-    check(playerHand, houseHand);
-    bustCheck(playerHand);
-
-    //bust = winCheck();
-    //check(houseHand, houseVal);
-    //bust = WinLoss();
-    bust = true;
+function dealHand(){
+  handInProgress = true;
+  dealCards();
+  playerVal = getHandVal(playerHand);
+  houseVal = getHandVal(houseHand);
+  if (playerVal === 21 && houseVal === 21) {
+    handInProgress = false;
+    message = "Both Player & House have Blackjack!";
+  } else if (playerVal === 21) {
+    handInProgress = false;
+    message = "Player has Blackjack";
+  } else if (houseVal === 21) {
+    handInProgress = false;
+    message = "House has Blackjack";
   }
   render();
 }
 
 init();
-start();

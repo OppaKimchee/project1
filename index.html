@@ -14,29 +14,37 @@
 <body>
   <head>
     <h1>Black Jack</h1>
-    <h3>MONEY</h3>
   </head>
   <nav><button>START</button></nav>
   <div class="container">
     <div id="deck">DECK</div>
-    <div id="house">HOUSE
+    <div id="house">HOUSE: <span></span>
       <div id="houseBoard"></div>
     </div>
+  </div>
+  <div id="displayContainer">
     <div id="pool">POOL</div>
     <div id="display">DISPLAY</div>
-    <div id="player">PLAYER
+  </div>
+  <div class="container" id="playerContainer">
+    <div id="player">PLAYER: <span></span>
       <div id="playerBoard"></div>
     </div>
-    <div id="bets">BETS
-      <button id="m100">-100</button>
-      <button id="m10">-10</button>
-      <button id="a10">+10</button>
-      <button id="a100">+100</button>
-       <button id="confirm">CONFIRM</button>
+  </div>
+  <div id="buttonContainer">
+    <div id="betDisplay">BETS
+      <button id="100">100</button>
+      <button id="25">25</button>
+      <button id="10">10</button>
+      <button id="1">1</button>
+      <button id="clear">Clear Bets</button>
+      <button id="deal">Deal Cards</button>
+    </div>
+    <div id="hitStandDisplay">
       <button class="hitStand" id="hit">HIT</button>
       <button class="hitStand" id="stand">STAND</button>
     </div>
-  </div>
+</div>
   <script src="js/script.js"></script>
 </body>
 </html>
