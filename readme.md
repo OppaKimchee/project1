@@ -1,4 +1,4 @@
-#Welcome to Black Jack!
+# Welcome to Black Jack!
 ## the road to riches!
  In this Game, You as the User will be starting your journey towards your first look at BLACK JACK!
  
@@ -9,7 +9,7 @@ This version of Black Jack was developed By Justin Kim™
 - It can be played together as players vs the "House"(Dealer) or against each other FFA(Free For All) style.
 - this version created by me will be a single player game against the computer.
 
-####Rules of Black Jack
+#### Rules of Black Jack
 
 1. You as the Player will be initially dealt two cards as your starting hand.
  - cards with value of 1 - 10 are as stated.
