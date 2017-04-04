@@ -1,20 +1,26 @@
 /*-- Variables --*/
-var deck = [];
+var deck;
 var shuffledDeck;
-var ranNumGen;
 var playerHand;
 var houseHand;
 var playerVal;
 var houseVal;
-var hit;
 var bust;
 var bank;
 var confirm;
 var pool;
 
+
+/*-- Cached Elements --*/
+
+
+
+/*-- Event Listeners --*/
+
+
 /*-- Initializer --*/
 function init(){
-  /*--!!!!remeber 1 is ACE which can equal to 1 or 11!!!!!--*/
+  deck = createDeck();
   shuffledDeck = shuffle(deck);
   playerHand = [];
   houseHand = [];
@@ -38,16 +44,21 @@ function start(){
   deal(playerHand);
   //show houseHand[1] on board
   deal(houseHand);
+  while(bust === false && !bankrupt()){
+    //bankrupt();
+    handleBets();
+    $('#hit').on('click',hitBtn);
+    $('#stand').on('click',standBtn);
+    check(playerHand, houseHand);
+    bustCheck(playerHand);
 
-  while(bust === false){
-    bets();
-    check(playerHand, playerVal);
-    check(houseHand, houseVal);
+    //bust = winCheck();
+    //check(houseHand, houseVal);
+    //bust = WinLoss();
     bust = true;
   }
+  render();
 }
 
-//create the deck
-createDeck();
 init();
 start();

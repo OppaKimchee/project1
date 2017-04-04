@@ -4,6 +4,10 @@ h1 {
 h3 {
   float:right;
 }
+body{
+  background: url("http://media.istockphoto.com/photos/green-poker-background-picture-id134503254?k=6&m=134503254&s=170667a&w=0&h=WpG5cjt1WS55TvyaA09-EFNroE1wDSVauklGpdzD0OU=") no-repeat center center fixed;
+  background-size: cover;
+}
 #deck {
   height: 300px;
   width: 50%;

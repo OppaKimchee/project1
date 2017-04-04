@@ -1,5 +1,6 @@
 /*-- Create the Original Deck, this deck is ordered --*/
 function createDeck(){
+  var deck = [];
   ['h','d','s','c'].forEach(function(suit){
     for(var rank = 2; rank <= 11; rank++){
       if(rank === 10){
@@ -15,6 +16,7 @@ function createDeck(){
       }
     };//forloop
   });//forEach function()
+  return deck;
 }//deck()
 
 /*-- Shuffle --*/
@@ -33,62 +35,65 @@ function shuffle(cards){
   return cards;
 }
 
-/*-- Ace Promp --*/
-function ace(hand){
-  if(hand === playerHand){
-    for (var i = 0; i < playerHand.length; i++){
-      if(playerHand[i].rank === 11){
-        playerVal -= 10;
-      }
-    }
-    if(playerVal > 21){
-      $('#display').text("BUST!!!!!!!!!!!!!!!");
-      return true;
-    }
-  }
-}
-
 /*-- Bets --*/
-function bets(){
+function handleBets(){
   if(bank >= 10){
     $('#a10').on('click',function(event){
       pool += 10;
       bank -= 10;
     });
   }
+
   if(bank >= 100){
     $('#a100').on('click',function(event){
       pool += 100;
       bank -= 100;
     })
   }
+
   $('#m100').on('click',function(event){
     if(pool >= 100){
-    pool -= 100;
+      pool -= 100;
+      bank += 100;
     }
   });
+
   $('#m10').on('click',function(event){
     if(pool >=10){
       pool -= 10;
+      bank += 10;
     }
   });
 
   $('#confirm').on('click',function(event){
-  $('#m10').off();
-  $('#m100').off();
-  $('#a10').off();
-  $('#a100').off();
+    $('#m10').off();
+    $('#m100').off();
+    $('#a10').off();
+    $('#a100').off();
   });
 }
 
-/*-- Hit or Stand --*/
-function hitOrStand(event){
-  console.log('hit')
-  if(hit === true){
-
+/*-- bankrupt --*/
+function bankrupt(){
+  if(bank < 10){
+    $('display').text("Sorry, you're bankrupt!");
+    return true;
   }
+  return false;
 }
 
+/*-- Hit or Stand --*/
+function hitBtn(event){
+  $('#hit').off();
+  $('#stand').off();
+  return deal(playerHand);
+}
+function standBtn(event){
+  $('#stand').off();
+  $('#hit').off();
+  $('.card').removeClass('back')
+  return
+}
 /*-- deal card to player depending on passed value --*/
 function deal(player){
   if(player === playerHand){
@@ -98,58 +103,89 @@ function deal(player){
     shuffledDeck.splice(0,1);
   }
   else{
-    houseHand.push(shuffledDeck[0])
     //add card
-    shuffledDeck.splice(0,1);
+    if(houseHand.length === 0){
+      $('#houseBoard').append(`<div class="card ${shuffledDeck[0].card} back"></div>`)
+      shuffledDeck.splice(0,1);
+      houseHand.push(shuffledDeck[0])
+    }
+    else{
+      houseHand.push(shuffledDeck[0])
+      $('#houseBoard').append(`<div class="card ${shuffledDeck[0].card}"></div>`)
+      shuffledDeck.splice(0,1);
+    }
   }
 }
 
 /*-- check hand value for cross checking with bust --*/
-function check(hand,val){
-  if(val === playerVal){
-    for(var i = 0; i < hand.length; i++){
-      switch (hand[i].rank){
-        case 2: playerVal += hand[i].rank;  break;
-        case 3: playerVal += hand[i].rank;  break;
-        case 4: playerVal += hand[i].rank;  break;
-        case 5: playerVal += hand[i].rank;  break;
-        case 6: playerVal += hand[i].rank;  break;
-        case 7: playerVal += hand[i].rank;  break;
-        case 8: playerVal += hand[i].rank;  break;
-        case 9: playerVal += hand[i].rank;  break;
-        case 10: playerVal += hand[i].rank; break;
-        case 11: playerVal += hand[i].rank; break;
-        default:  break;
-      }
-    bustCheck(playerHand);
+function check(playerHand, houseHand){
+  playerVal = 0; // reset player val to 0
+  for(var i = 0; i < playerHand.length; i++){
+    playerVal += playerHand[i].rank;
+  }
+  bustCheck(playerHand);
+
+  houseVal = 0;
+  for(var i = 0; i < houseHand.length; i++){
+    houseVal += houseHand[i].rank;
+  }
+  bustCheck(houseHand);
+}
+
+// two bust vars, playerBust, houseBust
+// set bust vars during bustCheck
+// after check() returns, check bust vars
+// if a bust var === true, other has won
+// if no bust vars are true, compare hand values
+// highest wins, add pot to winner bank
+// delete switch statement
+
+/*-- Check to see if hand was busted --*/
+function bustCheck(hand){
+  var playerBust = false;
+  var houseBust = false;
+
+  if (playerVal > 21) {
+    ace(playerHand);
+    // check if player is busted
+    if(playerVal > 21){
+      $('#display').text("BUST!!!!!!!!!!!!!!!");
+      playerBust = true;
     }
   }
-  else{
-    for(var i = 0; i < hand.length; i++){
-      switch (hand[i].rank){
-        case 2: houseVal += hand[i].rank;  break;
-        case 3: houseVal += hand[i].rank;  break;
-        case 4: houseVal += hand[i].rank;  break;
-        case 5: houseVal += hand[i].rank;  break;
-        case 6: houseVal += hand[i].rank;  break;
-        case 7: houseVal += hand[i].rank;  break;
-        case 8: houseVal += hand[i].rank;  break;
-        case 9: houseVal += hand[i].rank;  break;
-        case 10: houseVal += hand[i].rank; break;
-        case 11: houseVal += hand[i].rank; break;
-        default:  break;
-      }
-      bustCheck(houseHand);
+
+  if(houseVal > 21){
+    ace(houseHand);
+    if(houseVal > 21 ){
+      $('#display').text("Player Wins");
+      houseBust = true;
     }
   }
 }
 
-/*-- Check to see if hand was busted --*/
-function bustCheck(player){
-  if(player === playerHand){
-    return playerVal > 21 ? ace(playerHand) : bust = false;
+/*-- Ace Promp --*/
+function ace(hand){
+  if(hand === playerHand){
+    for (var i = 0; i < playerHand.length; i++){
+      if(playerHand[i].rank === 11){
+        playerHand[i].rank = 1;
+        playerVal -= 10;
+        break;
+      }
+    }
   }
   else{
-   return houseVal > 21 ? ace(houseHand) : bust = false;
+    for(var i = 0; i < houseHand.length; i++){
+      if(houseHand[i].rank === 11){
+        houseHand[i].rank = 1;
+        houseHand -= 10;
+        break;
+      }
+    }
   }
 }
+
+function render() {
+
+}
+
