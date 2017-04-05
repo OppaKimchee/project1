@@ -67,18 +67,19 @@ body{
 .hitStand{
   width: 50%;
   margin: 0 auto;
+  text-align: center;
   position: relative;
-  left: 50%;
 }
 #hitStandDisplay{
-  width: 50%;
+  width: 100%;
+  text-align: center;
   margin: 0 auto;
   position: absolute;
-  bottom: 100px;
 }
 #buttonContainer{
   width: 100%;
   margin: 0 auto;
+  text-align: center;
   position:absolute;
-  bottom: 100px;
+  bottom: 10%;
 }
