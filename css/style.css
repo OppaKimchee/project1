@@ -1,3 +1,6 @@
+*{
+  font-family: 'Revalia', cursive;
+}
 h1 {
   display: inline-block;
 }
@@ -34,7 +37,6 @@ body{
 
 .container{
   position:relative;
-  border:1px solid red;
 }
 
 #playerContainer{
@@ -45,7 +47,7 @@ body{
 #display{
   width: 50%;
   margin: 0 auto;
-  background-color: yellow;
+  font-size: ;
 }
 #displayContainer{
   margin: 0 auto;
@@ -55,15 +57,18 @@ body{
 #pool{
   width: 50%;
   margin: 0 auto;
-  background-color: pink;
+  position: relative;
+  left: 50%;
 }
 #betDisplay{
   width: 75%;
   margin: 0 auto;
 }
 .hitStand{
-  width: 100px;
+  width: 50%;
   margin: 0 auto;
+  position: relative;
+  left: 50%;
 }
 #hitStandDisplay{
   width: 50%;
@@ -72,8 +77,8 @@ body{
   bottom: 100px;
 }
 #buttonContainer{
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
   position:absolute;
-  bottom: 0;
+  bottom: 100px;
 }

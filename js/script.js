@@ -30,17 +30,13 @@ $('#10').on('click',function(event){
 $('#1').on('click',function(event){
   handleBets(1);
 });
-// $('#confirm').on('click',function(event){
-//   $('#m10').off();
-//   $('#m100').off();
-//   $('#a10').off();
-//   $('#a100').off();
-// });
-$('#clear').on('click')
-$('#deal').on('click',dealHand)
+$('#clear').on('click',clearBets);
+$('#deal').on('click',dealHand);
 
 $('#hit').on('click',handleHit);
-$('#stand').on('click',standBtn);
+$('#stand').on('click',handleStand);
+
+$('#start').on('click',init);
 
 /*-- Initializer --*/
 function init(){
@@ -55,6 +51,7 @@ function init(){
   handInProgress = false;
   playerHand = [];
   houseHand = [];
+
   render();
 }
 
@@ -65,14 +62,19 @@ function dealHand(){
   playerVal = getHandVal(playerHand);
   houseVal = getHandVal(houseHand);
   if (playerVal === 21 && houseVal === 21) {
-    handInProgress = false;
     message = "Both Player & House have Blackjack!";
-  } else if (playerVal === 21) {
     handInProgress = false;
-    message = "Player has Blackjack";
-  } else if (houseVal === 21) {
+  }
+  else if (playerVal === 21) {
     handInProgress = false;
-    message = "House has Blackjack";
+    message = `Player has Blackjack. You win $${pool*2}`;
+    bank += pool * 2;
+    pool = 0;
+  }
+  else if (houseVal === 21) {
+    handInProgress = false;
+    message = `House has Blackjack. You lose $${pool} `;
+    pool = 0;
   }
   render();
 }

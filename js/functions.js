@@ -41,26 +41,24 @@ function handleBets(bet){
     bank -= bet;
     pool += bet;
   }
+  render();
 }
 
-/*-- bankrupt --*/
-function bankrupt(){
-  if(bank < 10){
-    $('display').text("Sorry, you're bankrupt!");
-    return true;
-  }
-  return false;
+function clearBets(){
+  bank += pool;
+  pool = 0;
+  render();
 }
 
 /*-- Hit or Stand --*/
 function handleHit(event){
   playerHand.push(shuffledDeck.pop());
   playerVal = getHandVal(playerHand);
-  if (playerVal > 21) doHandOver();
+  if (playerVal >= 21) doHandOver();
   render();
 }
 
-function standBtn(event){
+function handleStand(event){
   doHandOver();
 }
 /*-- deal card to player depending on passed value --*/
@@ -71,37 +69,48 @@ function dealCards(){
   houseHand.push(shuffledDeck.pop());
   playerHand.push(shuffledDeck.pop());
   houseHand.push(shuffledDeck.pop());
+  render();
 }
 
-function doHandOver() {
+function doHandOver(){
   handInProgress = false;
-  if (playerVal > 21) {
-    if (bank >= pool) {
-      bank -= pool;
-    } else {
+  while(houseVal < 17){
+    houseHand.push(shuffledDeck.pop());
+    houseVal = getHandVal(houseHand);
+  }
+  if (playerVal > 21){
+      message = `You lost $${pool}, Please Place Your Bets Again!`;
       pool = 0;
-    }
-    message = "You Lose";
-  } else if (houseVal > 21) {
-    bank += pool;
-    message = "You Won!";
-  } else if (playerVal === houseVal) {
+  }
+  else if (houseVal > 21){
+    message = `You win $${pool*1.5}! Please Place Your Bets Again.`;
+    bank += pool*1.5;
+    pool = 0;
+  }
+  else if (playerVal === houseVal){
     message = "Tied!";
-  } else if (playerVal > houseVal) {
     bank += pool;
-    message = "You Won!";
-  } else {
-    if (bank >= pool) {
-      bank -= pool;
-    } else {
-      pool = 0;
-    }
-    message = "Your Lose";
+    pool = 0;
+  }
+  else if (playerVal > houseVal){
+    message = `You win $${pool*1.5}!`;
+    bank += pool*1.5;
+    pool = 0;
+  }
+  else {
+    message = "You Lose";
+    pool = 0;
+  }
+
+  if(shuffledDeck.length < 14) {
+    message += " New Deck in play!";
+    deck = createDeck();
+    shuffledDeck = shuffle(deck);
   }
   render();
 }
 
-/*-- check hand value for cross checking with bust --*/
+/*-- compute and return the value of the passed hand --*/
 function getHandVal(hand){
   var val = 0;
   var aceCount = 0;
@@ -117,16 +126,27 @@ function getHandVal(hand){
 }
 
 function render() {
+  if(!pool){
+
+    $('#display').text("Please Place Your Bets");
+    console.log(pool)
+    $('#deal').hide();
+  }
+  else{
+    $('#deal').show();
+  }
+
   handInProgress ? $('#betDisplay').hide() : $('#betDisplay').show();
   handInProgress ? $('#hitStandDisplay').show() : $('#hitStandDisplay').hide();
   if (playerHand.length) renderHands();
   $('#display').text(message);
+  if(handInProgress) $('#house span').text(houseHand[1].rank);
   if (!handInProgress) $('#house span').text(houseVal);
   $('#player span').text(playerVal);
-
-
-
-
+  $('#bank').text(`$${bank}`);
+  $('#pool').text(`$${pool}`);
+  console.log(bank)
+  if(bank < 1 && pool === 0) message = "Sorry, you're bankrupt! Please go to the ATM and feed me more please...I mean press start to play again.";
 }
 
 function renderHands() {
@@ -143,4 +163,3 @@ function renderHands() {
     }
   });
 }
-
