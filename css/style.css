@@ -18,31 +18,31 @@ body{
 }
 
 #house {
-  width: 75%;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
   background-color: clear;
-  position:absolute;
-  top: 0;
-  right: 0;
-  display: inline-block;
+  position:relative;
   color: white;
 }
 
 #player {
   width: 50%;
+  text-align: center;
   padding: 0;
   background-color: clear;
   margin: 0 auto;
   color: white;
 }
 
-.container{
-  position:relative;
-}
-
 #playerContainer{
   position:relative;
   top:150px;
 }
+.container{
+  position:relative;
+}
+
 
 #display{
   width: 50%;
