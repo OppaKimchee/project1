@@ -11,7 +11,8 @@ var bank;
 var pool;
 var handInProgress;
 var message;
-
+var bgm = new Audio('music/bgm.mp3');
+bgm.loop = true;
 
 /*-- Cached Elements --*/
 
@@ -42,6 +43,21 @@ $('#instructions').on('click',function(event){
   $('#info').toggle();
 });
 
+$('#bgm').on('click',function(event){
+  bgm.play();
+  $('#bgm').hide();
+  $('#mute').show();
+});
+$('#mute').on('click',function(event){
+  bgm.pause();
+  $('#mute').hide();
+  $('#bgm').show();
+});
+
+$('#logo').on('click',function(event){
+  $('#table').html(`Created by: JUSTIN "THE KIMCHEE" KIM!<br><img src="images/ga.png">Honorable Mentions: Jim Clark, Jon Tamsut, AJ, Jerry.`).css({"color":"white"});
+})
+
 /*-- Initializer --*/
 function init(){
   deck = createDeck();
@@ -59,6 +75,7 @@ function init(){
   $('#playerBoard').html('');
   $('#houseBoard').html('');
   $('#info').hide();
+  $('#mute').hide();
   render();
 }
 

@@ -21,7 +21,7 @@ body{
 }
 #start{
   position: absolute;
-  left: 5%;
+  left: 3%;
   bottom: 0%;
   width: 8%;
   z-index: 100;
@@ -158,5 +158,18 @@ bottom: 10%;
   right: 25%;
   bottom: -9%;
 }
+#bgm{
+  width: 4%;
+  position: absolute;
+  bottom: 2%;
+  left: 13%;
+  z-index: 100;
+}
 
+#mute{
+  width: 5%;
+  position: absolute;
+  bottom: 1%;
+  left: 13%;
+}
 

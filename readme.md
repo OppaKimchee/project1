@@ -1,5 +1,7 @@
 # Welcome to Black Jack!
+![21](images/logo.gif)
 ## the road to riches! or bankruptcy...
+
  In this Game, You as the User will be starting your journey towards your first look at BLACK JACK! (yes there's a space in between black and jack because I said so)
  
 -
@@ -11,6 +13,7 @@ This version of Black Jack was developed by Justin Kim™
 - this version created by me will be a single player game against the computer.
 
 #### Rules of Black Jack
+![blackjack](images/blackjack.png)
 1. You start the game by adding a ``bet`` amount.
 2. Click the ``deal cards`` button to deal hands out.
 1. You as the Player will be initially dealt two cards as your starting hand.
@@ -23,9 +26,14 @@ This version of Black Jack was developed by Justin Kim™
 5. When you ``win`` a hand you will win ``1.5x`` your bets in the ``pool``
 6. If your lucky enough to get ``Black Jack``, you win ``2x``your pool bet! WOOO!
 
-
+#### Future Features:
+1. double down
+2. double down on a double on a double down! hah!
+3. make house(dealer) hit on soft 17's(Ace,6) instead of standing on all 17's
+ 
 
 #### credits:
+![GA](images/ga.png)
 
 Instructors:
 
