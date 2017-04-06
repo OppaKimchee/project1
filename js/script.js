@@ -38,6 +38,10 @@ $('#stand').on('click',handleStand);
 
 $('#start').on('click',init);
 
+$('#instructions').on('click',function(event){
+  $('#info').toggle();
+});
+
 /*-- Initializer --*/
 function init(){
   deck = createDeck();
@@ -54,12 +58,14 @@ function init(){
   message = "";
   $('#playerBoard').html('');
   $('#houseBoard').html('');
+  $('#info').hide();
   render();
 }
 
 /*-- Game Logic --*/
 function dealHand(){
   handInProgress = true;
+  message = "";
   dealCards();
   playerVal = getHandVal(playerHand);
   houseVal = getHandVal(houseHand);

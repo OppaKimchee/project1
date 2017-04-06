@@ -133,7 +133,6 @@ function render() {
   else{
     $('#deal').show();
   }
-
   handInProgress ? $('.playerProgress').hide() : $('.playerProgress').show();
   handInProgress ? $('#hitStandDisplay').show() : $('#hitStandDisplay').hide();
   if (playerHand.length) renderHands();
@@ -141,10 +140,9 @@ function render() {
   if(handInProgress) $('#house span').text(houseHand[1].rank);
   if (!handInProgress) $('#house span').text(houseVal);
   $('#player span').text(playerVal);
-  $('#bank').text(`$${bank}`);
-  $('#pool').text(`$${pool}`);
-  console.log(bank)
-  if(bank < 1 && pool === 0) message = "Sorry, you're bankrupt! Please go to the ATM and feed me more please... I mean press start to play again.";
+  $('#bank').text(`Bank: $${bank}`);
+  $('#pool').text(`Bets: $${pool}`);
+  if(bank < 1 && pool === 0) message = "Sorry, you're bankrupt! Please go to the ATM and feed me more please... I mean press play again. I DARE YOU!.";
 }
 
 function renderHands() {

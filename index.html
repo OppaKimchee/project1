@@ -14,29 +14,25 @@
 </head>
 <body>
   <div id="table">
-    <header>
-      <h1><img src="images/board/Blackjack.gif" id="logo">Go Broke or Go Home!</h1>
-    </header>
-    <nav><button id="start">START</button></nav>
+    <h1><img src="images/board/Blackjack.gif" id="logo">Go Broke or Go Home!</h1>
+    <img src="images/board/reset.png" id="start">
+    <img src="images/board/info.png" id="instructions">
     <div class="container">
-      <div id="house">HOUSE: <span></span>
-        <div id="houseBoard"></div>
-      </div>
+      <div id="deck" class="card back west"></div>
+      <div id="house">HOUSE: <span></span></div>
+      <div id="houseBoard"></div>
     </div>
-    <div id="displayContainer">
-      <div id="pool">POOL</div>
-      <div id="bank">BANK</div>
-      <div id="display">DISPLAY</div>
-    </div>
+    <div id="display">DISPLAY</div>
+    <div id="pool">POOL</div>
+    <div id="bank">BANK</div>
     <div class="container" id="playerContainer">
-      <div id="player">PLAYER: <span></span>
-        <div id="playerBoard"></div>
-      </div>
+      <div id="player">PLAYER: <span></span></div>
+      <div id="playerBoard"></div>
     </div>
     <div id="buttonContainer">
       <div class="playerProgress">
-        <button id="clear">Clear Bets</button>
-        <button id="deal">Deal Cards</button>
+        <img src="images/board/clear.png" id="clear">
+        <img src="images/board/deal.png" id="deal">
       </div>
       <div class="playerProgress" id="chips">
         <img src="images/board/hundred.png" id="hundred">
@@ -45,9 +41,23 @@
         <img src="images/board/one.png" id="one">
       </div>
       <div id="hitStandDisplay">
-        <button class="hitStand" id="hit">HIT</button>
-        <button class="hitStand" id="stand">STAND</button>
+        <img src="images/board/hit.png" class="hitStand" id="hit">
+        <img src="images/board/stand.png" class="hitStand" id="stand">
       </div>
+    </div>
+    <div id="info">
+      <strong>Instructions:</strong>
+      <br>------------
+      <br>1. Place your bets.
+      <br><br>2. Press Deal Cards to start the match after placing your bets.
+      <br><br>3. Press Hit to get another card.
+      <br><br>4. Press Stand to end your turn.
+      <br><br>5. If you win, you will gain your bet x2 in your bank.
+      <br><br>6. If you lose, you lose your bet.
+      <br><br>7. Getting 21 (Ace + any card value with 10) on initial hand, you will gain your bet x2 + another 1.5x your bet!
+      <br><br>8. If dealer gets 21 and its not a tie then you just lose your bet.
+      <br><br>9. Cards: 2,3,4,5,6,7,8,9,10,
+      <br><br>10. Jack = 10, Queen = 10, King = 10, Aces will initially be 11 and can be turned to 1.
     </div>
   </div>
   <script src="js/script.js"></script>
