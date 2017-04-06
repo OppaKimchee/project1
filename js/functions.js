@@ -127,7 +127,6 @@ function render() {
   if(!pool){
 
     $('#display').text("Please Place Your Bets");
-    console.log(pool)
     $('#deal').hide();
   }
   else{
