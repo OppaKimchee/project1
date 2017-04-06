@@ -55,7 +55,7 @@ $('#mute').on('click',function(event){
 });
 
 $('#logo').on('click',function(event){
-  $('#table').html(`Created by: JUSTIN "THE KIMCHEE" KIM!<br><img src="images/ga.png">Honorable Mentions: Jim Clark, Jon Tamsut, AJ, Jerry.`).css({"color":"white"});
+  $('#table').html(`Created by: JUSTIN "THE KIMCHEE" KIM!<br>Honorable Mentions: Jim Clark, Jon Tamsut, AJ, Jerry.<br><img src="images/ga.png">`).css({"color":"white"});
 })
 
 /*-- Initializer --*/
