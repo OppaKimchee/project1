@@ -18,16 +18,16 @@ var message;
 
 
 /*-- Event Listeners --*/
-$('#100').on('click',function(event){
+$('#hundred').on('click',function(event){
   handleBets(100);
 });
-$('#25').on('click',function(event){
+$('#twentyFive').on('click',function(event){
   handleBets(25);
 });
-$('#10').on('click',function(event){
-  handleBets(10);
+$('#five').on('click',function(event){
+  handleBets(5);
 });
-$('#1').on('click',function(event){
+$('#one').on('click',function(event){
   handleBets(1);
 });
 $('#clear').on('click',clearBets);
@@ -51,7 +51,9 @@ function init(){
   handInProgress = false;
   playerHand = [];
   houseHand = [];
-
+  message = "";
+  $('#playerBoard').html('');
+  $('#houseBoard').html('');
   render();
 }
 
@@ -67,8 +69,8 @@ function dealHand(){
   }
   else if (playerVal === 21) {
     handInProgress = false;
-    message = `Player has Blackjack. You win $${pool*2}`;
-    bank += pool * 2;
+    message = `Player has Blackjack. You win $${pool*1.5}`;
+    bank += pool + pool * 1.5;
     pool = 0;
   }
   else if (houseVal === 21) {

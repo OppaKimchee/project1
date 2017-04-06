@@ -81,10 +81,9 @@ function doHandOver(){
   if (playerVal > 21){
       message = `You lost $${pool}, Please Place Your Bets Again!`;
       pool = 0;
-  }
-  else if (houseVal > 21){
-    message = `You win $${pool*1.5}! Please Place Your Bets Again.`;
-    bank += pool*1.5;
+  } else if (houseVal > 21) {
+    message = `You win $${pool}! Please Place Your Bets Again.`;
+    bank += pool*2;
     pool = 0;
   }
   else if (playerVal === houseVal){
@@ -93,19 +92,18 @@ function doHandOver(){
     pool = 0;
   }
   else if (playerVal > houseVal){
-    message = `You win $${pool*1.5}!`;
-    bank += pool*1.5;
+    message = `You win $${pool}!`;
+    bank += pool*2;
     pool = 0;
   }
   else {
-    message = "You Lose";
+    message = `You lost $${pool}, Please Place Your Bets Again!`;
     pool = 0;
   }
 
   if(shuffledDeck.length < 14) {
     message += " New Deck in play!";
-    deck = createDeck();
-    shuffledDeck = shuffle(deck);
+    shuffledDeck = shuffle(createDeck());
   }
   render();
 }
@@ -136,7 +134,7 @@ function render() {
     $('#deal').show();
   }
 
-  handInProgress ? $('#betDisplay').hide() : $('#betDisplay').show();
+  handInProgress ? $('.playerProgress').hide() : $('.playerProgress').show();
   handInProgress ? $('#hitStandDisplay').show() : $('#hitStandDisplay').hide();
   if (playerHand.length) renderHands();
   $('#display').text(message);
@@ -146,7 +144,7 @@ function render() {
   $('#bank').text(`$${bank}`);
   $('#pool').text(`$${pool}`);
   console.log(bank)
-  if(bank < 1 && pool === 0) message = "Sorry, you're bankrupt! Please go to the ATM and feed me more please...I mean press start to play again.";
+  if(bank < 1 && pool === 0) message = "Sorry, you're bankrupt! Please go to the ATM and feed me more please... I mean press start to play again.";
 }
 
 function renderHands() {

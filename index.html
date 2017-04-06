@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>2P Black Jack</title>
+  <title>Black Jack: Go Broke or Go Home!</title>
   <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -13,39 +13,43 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <head>
-    <h1>Black Jack</h1>
-  </head>
-  <nav><button id="start">START</button></nav>
-  <div class="container">
-    <div id="house">HOUSE: <span></span>
-      <div id="houseBoard"></div>
+  <div id="table">
+    <header>
+      <h1><img src="images/board/Blackjack.gif" id="logo">Go Broke or Go Home!</h1>
+    </header>
+    <nav><button id="start">START</button></nav>
+    <div class="container">
+      <div id="house">HOUSE: <span></span>
+        <div id="houseBoard"></div>
+      </div>
+    </div>
+    <div id="displayContainer">
+      <div id="pool">POOL</div>
+      <div id="bank">BANK</div>
+      <div id="display">DISPLAY</div>
+    </div>
+    <div class="container" id="playerContainer">
+      <div id="player">PLAYER: <span></span>
+        <div id="playerBoard"></div>
+      </div>
+    </div>
+    <div id="buttonContainer">
+      <div class="playerProgress">
+        <button id="clear">Clear Bets</button>
+        <button id="deal">Deal Cards</button>
+      </div>
+      <div id="hitStandDisplay">
+        <button class="hitStand" id="hit">HIT</button>
+        <button class="hitStand" id="stand">STAND</button>
+      </div>
+      <div class="playerProgress" id="chips">
+        <img src="images/board/hundred.png" id="hundred">
+        <img src="images/board/twentyFive.png" id="twentyFive">
+        <img src="images/board/five.png" id="five">
+        <img src="images/board/one.png" id="one">
+      </div>
     </div>
   </div>
-  <div id="displayContainer">
-    <div id="pool">POOL</div>
-    <div id="bank">BANK</div>
-    <div id="display">DISPLAY</div>
-  </div>
-  <div class="container" id="playerContainer">
-    <div id="player">PLAYER: <span></span>
-      <div id="playerBoard"></div>
-    </div>
-  </div>
-  <div id="buttonContainer">
-    <div id="betDisplay">BETS
-      <button id="100">100</button>
-      <button id="25">25</button>
-      <button id="10">10</button>
-      <button id="1">1</button>
-      <button id="clear">Clear Bets</button>
-      <button id="deal">Deal Cards</button>
-    </div>
-    <div id="hitStandDisplay">
-      <button class="hitStand" id="hit">HIT</button>
-      <button class="hitStand" id="stand">STAND</button>
-    </div>
-</div>
   <script src="js/script.js"></script>
 </body>
 </html>

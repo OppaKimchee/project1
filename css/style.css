@@ -2,27 +2,37 @@
   font-family: 'Revalia', cursive;
 }
 h1 {
-  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  color: gold;
 }
-h3 {
-  float:right;
+#logo{
+  height: 100px;
 }
 body{
-  background: url("http://media.istockphoto.com/photos/green-poker-background-picture-id134503254?k=6&m=134503254&s=170667a&w=0&h=WpG5cjt1WS55TvyaA09-EFNroE1wDSVauklGpdzD0OU=") no-repeat center center fixed;
+  background: url("../images/board/feltBoard.jpg") no-repeat center center fixed;
   background-size: cover;
+  height:800px;
+
 }
 #deck {
   width: 25%;
-  background-color: clear;
   color: white;
 }
+#table{
+  background: url("../images/board/table.png") no-repeat center center;
+  height:100%;
+}
+#black{
+  color:black;
 
+}
 #house {
   width: 50%;
   margin: 0 auto;
   text-align: center;
-  background-color: clear;
   position:relative;
+  top:45px;
   color: white;
 }
 
@@ -30,39 +40,56 @@ body{
   width: 50%;
   text-align: center;
   padding: 0;
-  background-color: clear;
+  position: relative;
+  bottom: 12px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   margin: 0 auto;
   color: white;
 }
+
 
 #playerContainer{
   position:relative;
   top:150px;
 }
+
+#chips{
+
+}
+
 .container{
   position:relative;
 }
 
 
 #display{
-  width: 50%;
+  width: 100px;
   margin: 0 auto;
-  font-size: ;
+  color:#ff6666;
 }
 #displayContainer{
+  position: relative;
   margin: 0 auto;
-  display:inline-block;
-
 }
 #pool{
-  width: 50%;
-  margin: 0 auto;
+  position: absolute;
+  top: 97px;
+  text-align: center;
+  color:gold;
+}
+#bank{
+  color: gold;
+  text-align: center;
   position: relative;
-  left: 50%;
+  top: 465px;
+  left: 188px;
 }
 #betDisplay{
   width: 75%;
   margin: 0 auto;
+}
+#hundred,#twentyFive,#five,#one {
+  height: 80px;
 }
 .hitStand{
   width: 50%;
