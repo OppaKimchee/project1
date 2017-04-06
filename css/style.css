@@ -13,15 +13,15 @@ body{
   background: url("../images/board/feltBoard.jpg") no-repeat center center fixed;
   background-size: cover;
   height:800px;
-
-}
-#deck {
-  width: 25%;
-  color: white;
+  min-width: 960px;
 }
 #table{
   background: url("../images/board/table.png") no-repeat center center;
   height:100%;
+}
+#deck {
+  width: 25%;
+  color: white;
 }
 #black{
   color:black;
@@ -63,7 +63,8 @@ body{
 
 
 #display{
-  width: 100px;
+  width: 100%;
+  text-align:center;
   margin: 0 auto;
   color:#ff6666;
 }
@@ -109,4 +110,5 @@ body{
   text-align: center;
   position:absolute;
   bottom: 10%;
+  min-width:960px;
 }
