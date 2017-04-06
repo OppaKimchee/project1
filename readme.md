@@ -6,7 +6,7 @@
 
  In this Game, You as the User will be starting your journey towards your first look at BLACK JACK! (yes there's a space in between black and jack because I said so)
  
--
+----------
 This version of Black Jack was developed by Justin Kim™
 
 - This Black Jack is a very simplified version of Black Jack and a great place to practice your journey to your new found addiction! yay!
