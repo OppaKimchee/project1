@@ -13,6 +13,7 @@ This version of Black Jack was developed by Justin Kim™
 - Black Jack is essentially a card game played by 2 or more players or computer opponents.
 - It can be played together as players vs the "House"(Dealer) or against each other FFA(Free For All) style.
 - this version created by me will be a single player game against the computer.
+- for game play help click the blackjack information logo in the game for instructions on how to play in game.
 
 #### Rules of Black Jack
 ![blackjack](images/blackjack.png)
