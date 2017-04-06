@@ -2,6 +2,8 @@
 ![21](images/logo.gif)
 ## the road to riches! or bankruptcy...
 
+### [CLICK ME TO START YOUR JOURNEY!](https://oppakimchee.github.io/project1/)
+
  In this Game, You as the User will be starting your journey towards your first look at BLACK JACK! (yes there's a space in between black and jack because I said so)
  
 -
