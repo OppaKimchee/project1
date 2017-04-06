@@ -33,7 +33,13 @@ This version of Black Jack was developed by Justin Kim™
 1. double down
 2. double down on a double on a double down! hah!
 3. make house(dealer) hit on soft 17's(Ace,6) instead of standing on all 17's
- 
+
+#### Technologies Used:
+1. HTML5
+2. CSS3
+3. Javascript
+4. jQuery
+5. unknown source css card library
 
 #### credits:
 ![GA](images/ga.png)
