@@ -1,22 +1,7 @@
 /*-- Variables --*/
-var deck;
-var shuffledDeck;
-var playerHand;
-var houseHand;
-var playerVal;
-var houseVal;
-var playerBust;
-var houseBust;
-var bank;
-var pool;
-var handInProgress;
-var message;
+var deck,shuffledDeck,playerHand,houseHand,playerVal,houseVal,playerBust,houseBust,bank,pool,handInProgress,message;
 var bgm = new Audio('music/bgm.mp3');
 bgm.loop = true;
-
-/*-- Cached Elements --*/
-
-
 
 /*-- Event Listeners --*/
 $('#hundred').on('click',function(event){

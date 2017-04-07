@@ -81,7 +81,8 @@ function doHandOver(){
   if (playerVal > 21){
       message = `You lost $${pool}, Please Place Your Bets Again!`;
       pool = 0;
-  } else if (houseVal > 21) {
+  }
+  else if (houseVal > 21) {
     message = `You win $${pool}! Please Place Your Bets Again.`;
     bank += pool*2;
     pool = 0;
@@ -125,7 +126,6 @@ function getHandVal(hand){
 
 function render() {
   if(!pool){
-
     $('#display').text("Please Place Your Bets");
     $('#deal').hide();
   }
@@ -153,7 +153,8 @@ function renderHands() {
   houseHand.forEach(function(card, idx) {
     if (idx === 0 && handInProgress) {
       $('#houseBoard').append(`<div class="card back"></div>`)
-    } else {
+    }
+    else {
       $('#houseBoard').append(`<div class="card ${card.card}"></div>`)
     }
   });

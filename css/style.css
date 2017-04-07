@@ -1,24 +1,29 @@
 *{
   font-family: 'Revalia', cursive;
 }
+
 h1 {
   margin: 0 auto;
   text-align: center;
   color: gold;
 }
+
 #logo{
   height: 100px;
 }
+
 body{
   background: url("../images/board/feltBoard.jpg") no-repeat center center fixed;
   background-size: cover;
   height:800px;
   min-width: 960px;
 }
+
 #table{
   background: url("../images/board/table.png") no-repeat center center;
   height:100%;
 }
+
 #start{
   position: absolute;
   left: 3%;
@@ -26,12 +31,15 @@ body{
   width: 8%;
   z-index: 100;
 }
+
 #instructions{
   position: absolute;
   bottom: 11%;
   left: 1%;
   width: 15%;
-  z-index: 100;}
+  z-index: 100;
+}
+
 #info{
   height: 69%;
   width: 17%;
@@ -40,6 +48,7 @@ body{
   bottom: 30%;
   color:#DDDDDD;
 }
+
 #deck {
   position:absolute;
   top: 40%;
@@ -54,6 +63,7 @@ body{
   top: 64px;
   color: white;
 }
+
 #houseBoard{
   margin: 6% auto;
   width: 50%;
@@ -72,7 +82,6 @@ body{
   color: white;
 }
 
-
 #playerContainer{
   position:relative;
   top:10%;
@@ -84,7 +93,6 @@ body{
   text-align: center;
 }
 
-}
 #chips{
   margin:-5%;
 }
@@ -93,7 +101,6 @@ body{
   position:relative;
 }
 
-
 #display{
   text-align: center;
   margin: 0 auto;
@@ -101,29 +108,35 @@ body{
   position: absolute;
   bottom: 23%;
 }
+
 #displayContainer{
   position: relative;
   margin: 0 auto;
 }
+
 #pool{
 text-align: center;
 color: gold;
 position: relative;
 bottom: 10%;
 }
+
 #bank{
   color: gold;
   text-align: center;
   position: relative;
   top: -9%;
 }
+
 #betDisplay{
   width: 75%;
   margin: 0 auto;
 }
+
 #hundred,#twentyFive,#five,#one {
   height: 80px;
 }
+
 .hitStand{
   width: 100px;
   height:100px;
@@ -131,6 +144,7 @@ bottom: 10%;
   text-align: center;
   position: relative;
 }
+
 #hitStandDisplay{
   width: 100%;
   text-align: center;
@@ -138,6 +152,7 @@ bottom: 10%;
   position: absolute;
   bottom:0;
 }
+
 #buttonContainer{
   width: 100%;
   margin: 0 auto;
@@ -146,18 +161,21 @@ bottom: 10%;
   bottom: 2%;
   min-width:960px;
 }
+
 #clear{
   width: 10%;
   position: absolute;
   right: 29%;
   bottom: -9%;
 }
+
 #deal{
   width: 92px;
   position: absolute;
   right: 25%;
   bottom: -9%;
 }
+
 #bgm{
   width: 4%;
   position: absolute;
